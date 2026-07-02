@@ -1,0 +1,75 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+    <meta charset="UTF-8">
+    <title>MyVitalTrajectory</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+    body{
+        font-family:Arial;
+        padding:40px;
+    }
+
+    #graphs{
+        width:700px;
+        margin-top:40px;
+        display:none;
+    }
+    </style>
+
+    </head>
+
+    <body>
+
+    <h2>Upload Your Health Report</h2>
+
+    <input type="file" id="report">
+
+    <div id="graphs">
+
+    <canvas id="bpChart"></canvas>
+    <br><br>
+    <canvas id="cholChart"></canvas>
+
+    </div>
+
+    <script>
+
+    document.getElementById("report").addEventListener("change",function(){
+
+        // Later you'll replace these with AI extracted values
+        const systolic=122;
+        const diastolic=80;
+        const cholesterol=178;
+
+        document.getElementById("graphs").style.display="block";
+
+        new Chart(document.getElementById("bpChart"),{
+            type:'bar',
+            data:{
+                labels:['Systolic','Diastolic'],
+                datasets:[{
+                    data:[systolic,diastolic]
+                }]
+            }
+        });
+
+        new Chart(document.getElementById("cholChart"),{
+            type:'line',
+            data:{
+                labels:['Current'],
+                datasets:[{
+                    label:'Cholesterol',
+                    data:[cholesterol]
+                }]
+            }
+        });
+
+    });
+
+    </script>
+
+    </body>
+    </html>
